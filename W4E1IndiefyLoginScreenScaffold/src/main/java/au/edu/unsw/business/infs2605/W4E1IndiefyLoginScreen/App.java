@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 /**
  * JavaFX App
@@ -14,7 +16,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginScreen"), 600, 400);
