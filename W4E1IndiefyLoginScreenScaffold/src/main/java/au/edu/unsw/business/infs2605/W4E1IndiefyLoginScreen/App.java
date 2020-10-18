@@ -10,6 +10,9 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.sql.SQLException;
+
+
 /**
  * JavaFX App
  */
@@ -22,6 +25,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("LoginScreen"), 600, 400);
         stage.setScene(scene);
         stage.show();
+        stage.setTitle("LOGIN");
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -33,7 +37,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        
+        DatabaseManager.createTableUser();
+        DatabaseManager.createTableSong();
         launch();
     }
 

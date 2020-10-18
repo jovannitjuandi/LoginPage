@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.sql.SQLException;
+
 public class LoginScreenController {
 
     //Initiate JavaFX nodes (visual elements), how do we connect these variables to the FXML view?
@@ -40,20 +42,18 @@ public class LoginScreenController {
     Text successfultext;
     
     @FXML
-    private void handleLoginButtonAction(ActionEvent event) {
+    private void handleLoginButtonAction(ActionEvent event) throws SQLException {
         
         // Get the user's input from the GUI 
         String username = nametext.getText();
         String password = passtext.getText();
-        boolean condition1 = (username.toUpperCase()).equals("PRETENTIOUS");
-        boolean condition2 = password.equals("Hipster");
-        boolean condition = (condition1)&(condition2);
+        boolean successfulLogin = DatabaseManager.login(username, password);
         
-        if (condition) {
+        if (successfulLogin) {
           // What should the user see when the login is successful?
           nextbutton.setVisible(true);
           incorrecttext.setVisible(false);
-          successfultext.setText("Login Successful, " + username + " (z5123456)!");
+          successfultext.setText("Login Successful, Jovanni Tjuandi (z5213864)!");
           successfultext.setVisible(true);
         } else {
           // What should the user see when the login is unsuccessful?
@@ -72,11 +72,21 @@ public class LoginScreenController {
     }
 
     
-    public void initialize() {
+    public void initialize() throws SQLException{
         // What should the user see when the screen loads?
         nextbutton.setVisible(false);
         successfultext.setVisible(false);
         incorrecttext.setVisible(false);
+        
+        DatabaseManager.addUser("Jovanni", "123");
+        DatabaseManager.addUser("Gracia", "456");
+        DatabaseManager.addUser("Tjuandi", "789");
+        DatabaseManager.addUser("z5213864", "zpass");
+        
+        DatabaseManager.addUserSong("Jov", "Glacier", "DJ ABC", "Frozen Chimps", "EDM");
+        DatabaseManager.addUserSong("Jov", "Foot Roll", "LIL X", "Gray", "Rap");
+        DatabaseManager.addUserSong("Jov", "Solid", "Duke Bronze", "Saxline", "RnB");
+        DatabaseManager.addUserSong("Jov", "Breeze", "DJ ABC", "Frozen Chimps", "EDM");
     }
 
 }

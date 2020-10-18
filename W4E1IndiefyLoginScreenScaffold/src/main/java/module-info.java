@@ -7,6 +7,8 @@ module au.edu.unsw.business.infs2605.W4E1IndiefyLoginScreen {
     requires javafx.controls;
     requires javafx.graphicsEmpty;
     requires javafx.graphics;
+    requires java.sql;
+    
 
     opens au.edu.unsw.business.infs2605.W4E1IndiefyLoginScreen to javafx.fxml;
     exports au.edu.unsw.business.infs2605.W4E1IndiefyLoginScreen;
