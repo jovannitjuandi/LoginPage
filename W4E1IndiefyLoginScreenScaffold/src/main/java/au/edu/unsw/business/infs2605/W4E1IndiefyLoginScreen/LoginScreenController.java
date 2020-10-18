@@ -33,13 +33,7 @@ public class LoginScreenController {
     PasswordField passtext;
     
     @FXML
-    Button nextbutton;
-    
-    @FXML
     Text incorrecttext;
-    
-    @FXML
-    Text successfultext;
     
     @FXML
     private void handleLoginButtonAction(ActionEvent event) throws SQLException, IOException {
@@ -55,12 +49,8 @@ public class LoginScreenController {
           global.setUser(username.toLowerCase());
           switchToSecondary();
           incorrecttext.setVisible(false);
-          successfultext.setText("Login Successful, Jovanni Tjuandi (z5213864)!");
-          successfultext.setVisible(true);
         } else {
           // What should the user see when the login is unsuccessful?
-          successfultext.setVisible(false);
-          nextbutton.setVisible(false);
           incorrecttext.setVisible(true);
         }
     }
@@ -75,8 +65,6 @@ public class LoginScreenController {
     
     public void initialize() throws SQLException{
         // What should the user see when the screen loads?
-        nextbutton.setVisible(false);
-        successfultext.setVisible(false);
         incorrecttext.setVisible(false);
         
         DatabaseManager.addUser("jovanni", "123");

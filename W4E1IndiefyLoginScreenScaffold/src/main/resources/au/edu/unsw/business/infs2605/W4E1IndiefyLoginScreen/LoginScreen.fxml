@@ -9,7 +9,6 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.W4E1IndiefyLoginScreen.LoginScreenController">
    <children>
-      <Button fx:id="nextbutton" layoutX="265.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleNextButtonAction" text="Next &gt;&gt;&gt;" />
       <Button layoutX="277.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" text="Login" />
       <TextField fx:id="nametext" layoutX="226.0" layoutY="137.0" />
       <PasswordField fx:id="passtext" layoutX="226.0" layoutY="182.0" />
@@ -17,7 +16,6 @@
       <Text layoutX="152.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
       <Text fx:id="incorrecttext" layoutX="92.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Incorrect username or password" />
       <Text layoutX="69.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text fx:id="successfultext" layoutX="92.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text layoutX="255.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indiefy">
          <font>
             <Font size="30.0" />
