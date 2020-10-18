@@ -42,7 +42,7 @@ public class LoginScreenController {
     Text successfultext;
     
     @FXML
-    private void handleLoginButtonAction(ActionEvent event) throws SQLException {
+    private void handleLoginButtonAction(ActionEvent event) throws SQLException, IOException {
         
         // Get the user's input from the GUI 
         String username = nametext.getText();
@@ -51,7 +51,9 @@ public class LoginScreenController {
         
         if (successfulLogin) {
           // What should the user see when the login is successful?
-          nextbutton.setVisible(true);
+          //nextbutton.setVisible(true);
+          global.setUser(username.toLowerCase());
+          switchToSecondary();
           incorrecttext.setVisible(false);
           successfultext.setText("Login Successful, Jovanni Tjuandi (z5213864)!");
           successfultext.setVisible(true);
@@ -61,7 +63,6 @@ public class LoginScreenController {
           nextbutton.setVisible(false);
           incorrecttext.setVisible(true);
         }
-        
     }
 
     
@@ -78,15 +79,21 @@ public class LoginScreenController {
         successfultext.setVisible(false);
         incorrecttext.setVisible(false);
         
-        DatabaseManager.addUser("Jovanni", "123");
-        DatabaseManager.addUser("Gracia", "456");
-        DatabaseManager.addUser("Tjuandi", "789");
+        DatabaseManager.addUser("jovanni", "123");
+        DatabaseManager.addUser("gracia", "456");
+        DatabaseManager.addUser("tjuandi", "789");
         DatabaseManager.addUser("z5213864", "zpass");
         
-        DatabaseManager.addUserSong("Jov", "Glacier", "DJ ABC", "Frozen Chimps", "EDM");
-        DatabaseManager.addUserSong("Jov", "Foot Roll", "LIL X", "Gray", "Rap");
-        DatabaseManager.addUserSong("Jov", "Solid", "Duke Bronze", "Saxline", "RnB");
-        DatabaseManager.addUserSong("Jov", "Breeze", "DJ ABC", "Frozen Chimps", "EDM");
+        DatabaseManager.addUserSong("jovanni", "Glacier", "DJ ABC", "Frozen Chimps", "EDM");
+        DatabaseManager.addUserSong("jovanni", "Foot Roll", "LIL X", "Gray", "Rap");
+        DatabaseManager.addUserSong("jovanni", "Solid", "Duke Bronze", "Saxline", "RnB");
+        DatabaseManager.addUserSong("jovanni", "Breeze", "DJ ABC", "Frozen Chimps", "EDM");
+        
+        DatabaseManager.addUserSong("tjuandi", "Numb", "Linkin Park", "Meteora", "Rock");
+        DatabaseManager.addUserSong("tjuandi", "In The End", "Black Veil Bride", "Wild Ones", "Metal");
+        DatabaseManager.addUserSong("tjuandi", "Animals", "Martin Garrix", "Animals", "EDM");
+        DatabaseManager.addUserSong("tjuandi", "Faint", "Linkin Park", "Meteora", "Metal");
+        DatabaseManager.addUserSong("tjuandi", "Virus", "Martin Garrix", "Virus", "EDM");
     }
 
 }

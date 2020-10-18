@@ -19,6 +19,9 @@ import javafx.util.Callback;
 public class SecondaryController {
     
     @FXML
+    Button backButton;
+    
+    @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("LoginScreen");
     }
@@ -45,14 +48,10 @@ public class SecondaryController {
         ObservableList<userSong> data = FXCollections.observableArrayList();
         data = DatabaseManager.getAllSong(user);
         
-        data.add(new userSong(new SimpleStringProperty("A"), new SimpleStringProperty("A"), new SimpleStringProperty("A"), new SimpleStringProperty("A")));
-        
-        
-        
-        System.out.println("Arraysize: " + data.size());
-        System.out.println("ArrayItem: " + data.get(2).getTrack());
-         
         trackColumn.setCellValueFactory(new PropertyValueFactory<userSong, String>("track"));
+        albumColumn.setCellValueFactory(new PropertyValueFactory<userSong, String>("album"));
+        artistColumn.setCellValueFactory(new PropertyValueFactory<userSong, String>("artist"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<userSong, String>("genre"));
         
         songTable.setItems(data);
         songTable.getColumns().addAll(trackColumn, artistColumn, albumColumn, genreColumn);
@@ -62,6 +61,6 @@ public class SecondaryController {
         // What should the user see when the screen loads?
         System.out.println("HELLO");
         
-        displayTable("Jov");
+        displayTable(global.getUser());
     }
 }

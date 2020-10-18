@@ -24,19 +24,19 @@ public class userSong {
         genre = ge;
     }
     
-    public SimpleStringProperty getTrack () {
-        return track;
+    public String getTrack () {
+        return track.get();
     }
     
-    public SimpleStringProperty getArtist () {
-        return artist;
+    public String getArtist () {
+        return artist.get();
     }
     
-    public SimpleStringProperty getAlbum () {
-        return album;
+    public String getAlbum () {
+        return album.get();
     }
     
-    public SimpleStringProperty getGenre () {
-        return genre;
+    public String getGenre () {
+        return genre.get();
     }
 }

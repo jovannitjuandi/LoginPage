@@ -48,9 +48,27 @@ public class DatabaseManager {
         openSong();
         Statement st = conn.createStatement();
         
-        String insertStatement = "INSERT INTO songs (USER, TRACK, ARTIST, ALBUM, GENRE) " + 
-                "VALUES ('" + un + "', '" + tr + "', '" + ar + "', '" + al + "', '" + ge + "');";
-        st.execute(insertStatement);
+        if (songExists(un, tr, ar, al, ge) == false) {
+            String insertStatement = "INSERT INTO songs (USER, TRACK, ARTIST, ALBUM, GENRE) " + 
+                    "VALUES ('" + un + "', '" + tr + "', '" + ar + "', '" + al + "', '" + ge + "');";
+            st.execute(insertStatement);
+        }
+    }
+    
+    public static void deleteSongs() throws SQLException {
+        openSong();
+        Statement st = conn.createStatement();
+        
+        String deleteStatement = "DELETE FROM songs";
+        st.execute(deleteStatement);
+    }
+    
+     public static void deleteUsers() throws SQLException {
+        openConnection();
+        Statement st = conn.createStatement();
+        
+        String deleteStatement = "DELETE FROM users";
+        st.execute(deleteStatement);
     }
     
     public static void createTableUser() throws SQLException {
@@ -93,6 +111,25 @@ public class DatabaseManager {
         return false;
     }
     
+    public static boolean songExists(String un, String tr, String ar, String al, String ge) throws SQLException {
+        openSong();
+        Statement st = conn.createStatement();
+        String getStatement = "SELECT * FROM songs";
+        ResultSet rs = st.executeQuery(getStatement);
+        
+        while (rs.next()) {
+            boolean usernameexist = (un.toUpperCase()).equals(rs.getString(2).toUpperCase());
+            boolean trackexist = (tr.toUpperCase()).equals(rs.getString(3).toUpperCase());
+            boolean artistexist = (ar.toUpperCase()).equals(rs.getString(4).toUpperCase());
+            boolean albumexist = (al.toUpperCase()).equals(rs.getString(5).toUpperCase());
+            boolean genreexist = (ge.toUpperCase()).equals(rs.getString(6).toUpperCase());
+            if (usernameexist & trackexist & artistexist & albumexist & genreexist) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static ObservableList<userSong> getAllSong(String user) throws SQLException {
         openSong();
         Statement st = conn.createStatement();
@@ -114,7 +151,7 @@ public class DatabaseManager {
         openConnection();
         Statement st = conn.createStatement();
         
-        String getStatement = "SELECT * FROM users where NAME = '" + username + "';";
+        String getStatement = "SELECT * FROM users where NAME = '" + username.toLowerCase() + "';";
         ResultSet rs = st.executeQuery(getStatement);
         
         return rs.getString(3);
