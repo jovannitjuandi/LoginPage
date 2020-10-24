@@ -4,13 +4,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.W4E1IndiefyLoginScreen.SecondaryController">
    <children>
-      <Text layoutX="248.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Indiefy" />
-      <Text layoutX="232.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jovanni Tjuandi z5213864" />
-      <TableView fx:id="songTable" layoutX="60.0" layoutY="159.0" prefHeight="200.0" prefWidth="480.0">
+      <Text layoutX="248.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Indiefy" />
+      <Text layoutX="232.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jovanni Tjuandi z5213864" />
+      <TableView fx:id="songTable" layoutX="60.0" layoutY="142.0" prefHeight="200.0" prefWidth="480.0">
         <columns>
           <TableColumn fx:id="trackColumn" prefWidth="119.33" text="Track" />
           <TableColumn fx:id="artistColumn" prefWidth="119.33" text="Artist" />
@@ -18,6 +19,12 @@
             <TableColumn fx:id="genreColumn" prefWidth="119.33" text="Genre" />
         </columns>
       </TableView>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToPrimary" text="&lt;&lt;&lt; Back" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToPrimary" text="&lt;&lt;&lt; Back" />
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="10.0" prefWidth="156.0">
+         <children>
+            <Button fx:id="trackButton" disable="true" mnemonicParsing="false" text="Track" />
+            <Button fx:id="displayButton" mnemonicParsing="false" onAction="#swithToDisplay" text="Display" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

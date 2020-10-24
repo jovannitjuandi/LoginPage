@@ -22,8 +22,20 @@ public class SecondaryController {
     Button backButton;
     
     @FXML
+    Button trackButton;
+    
+    @FXML
+    Button displayButton;
+    
+    
+    @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("LoginScreen");
+    }
+    
+    @FXML 
+    private void swithToDisplay() throws IOException {
+        App.setRoot("display");
     }
     
     @FXML
